@@ -1,6 +1,10 @@
 <?php
 namespace Sellastica\SmtpMailer;
 
+/**
+ * SMTP Mailer factory for client use
+ * Do not you for internal purposes!
+ */
 class SmtpMailerFactory
 {
 	/** @var \Sellastica\Project\Model\SettingsAccessor */
