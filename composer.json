@@ -1,0 +1,21 @@
+{
+	"name": "sellastica/smtp-mailer",
+	"homepage": "https://github.com/sellastica/smtp-mailer",
+	"license": "proprietary",
+	"authors": [
+		{
+			"name": "Tomáš Krejčí",
+			"homepage": "http://www.sellastica.com"
+		}
+	],
+	"require": {
+		"php": ">=7.1"
+	},
+	"require-dev": {
+	},
+	"autoload": {
+		"psr-4": {
+			"Sellastica\\SmtpMailer\\": "src/"
+		}
+	}
+}
