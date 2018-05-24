@@ -5,7 +5,8 @@ namespace Sellastica\SmtpMailer;
 class SmtpMailer extends \Nette\Mail\SmtpMailer implements \Nette\Mail\IMailer
 {
 	const MODE_SEND = 'send', //send email in standard way
-		MODE_DISPLAY = 'display'; //display email in the browser
+		MODE_DISPLAY = 'display',
+		MODE_DISABLE = 'disable'; //display email in the browser
 
 	/** @var string */
 	private $mode = self::MODE_SEND;
@@ -18,7 +19,7 @@ class SmtpMailer extends \Nette\Mail\SmtpMailer implements \Nette\Mail\IMailer
 	public function __construct(array $options = [])
 	{
 		if (isset($options['mode'])
-			&& !in_array($options['mode'], [self::MODE_DISPLAY, self::MODE_SEND])) {
+			&& !in_array($options['mode'], [self::MODE_DISPLAY, self::MODE_SEND, self::MODE_DISABLE])) {
 			throw new \InvalidArgumentException('Invalid mailer mode (neither send nor display), check config.neon');
 		}
 
@@ -45,8 +46,8 @@ class SmtpMailer extends \Nette\Mail\SmtpMailer implements \Nette\Mail\IMailer
 		if ($this->mode === self::MODE_DISPLAY) {
 			echo $message->getHtmlBody();
 			exit;
+		} elseif ($this->mode !== self::MODE_DISABLE) {
+			parent::send($message);
 		}
-
-		parent::send($message);
 	}
 }
