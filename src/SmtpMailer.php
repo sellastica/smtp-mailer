@@ -20,7 +20,7 @@ class SmtpMailer extends \Nette\Mail\SmtpMailer implements \Nette\Mail\IMailer
 	{
 		if (isset($options['mode'])
 			&& !in_array($options['mode'], [self::MODE_DISPLAY, self::MODE_SEND, self::MODE_DISABLE])) {
-			throw new \InvalidArgumentException('Invalid mailer mode (neither send nor display), check config.neon');
+			throw new \InvalidArgumentException('Invalid mailer mode, only "send", "display" or "disable" is allowed. Check config.neon');
 		}
 
 		$this->mode = $options['mode'] ?? self::MODE_SEND;
