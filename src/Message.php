@@ -1,19 +1,25 @@
 <?php
+
 namespace Sellastica\SmtpMailer;
 
 class Message extends \Nette\Mail\Message
 {
-	/** @var \Nette\Application\UI\ITemplate|null */
-	private $template;
-	/** @var array */
-	private $attachmentPaths = [];
 
+	/**
+	 * @var \Nette\Application\UI\ITemplate|null
+	 */
+	private $template;
+
+	/**
+	 * @var array
+	 */
+	private $attachmentPaths = [];
 
 	/**
 	 * Adds attachment.
-	 * @param  string
-	 * @param  string
-	 * @param  string
+	 * @param string
+	 * @param string
+	 * @param string
 	 * @return $this
 	 */
 	public function addAttachment($file, $content = null, $contentType = null): Message
@@ -84,7 +90,7 @@ class Message extends \Nette\Mail\Message
 	public function getTo(): array
 	{
 		return $this->getHeader('To')
-			? (array)$this->getHeader('To')
+			? (array) $this->getHeader('To')
 			: [];
 	}
 
@@ -103,7 +109,7 @@ class Message extends \Nette\Mail\Message
 	public function getCc(): array
 	{
 		return $this->getHeader('Cc')
-			? (array)$this->getHeader('Cc')
+			? (array) $this->getHeader('Cc')
 			: [];
 	}
 
@@ -122,7 +128,7 @@ class Message extends \Nette\Mail\Message
 	public function getBcc(): array
 	{
 		return $this->getHeader('Bcc')
-			? (array)$this->getHeader('Bcc')
+			? (array) $this->getHeader('Bcc')
 			: [];
 	}
 
